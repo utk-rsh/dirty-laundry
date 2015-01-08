@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cmath>
 #include <cstring>
+#include <cstdio>
 
 using namespace std;
 
@@ -17,14 +18,15 @@ while (T > 0)
 {
     T--;
     int N;
-    cin >> N;
+    scanf("%d",&N);
     vector<pair<int, int> > kingdoms;
     int c = 0;
     while (N > 0)
     {
         N--;
         int t1, t2;
-        cin >> t1 >> t2;
+        scanf("%d", &t1);
+        scanf("%d", &t2);
         pair<int, int> entry = make_pair(t1, t2);
         kingdoms.push_back(entry);
         c++;
@@ -56,6 +58,7 @@ while (T > 0)
         high = kingdoms[i].second;
        // cout << " index i is now " << i << " with new high as " << high << " and number of bombs placed is " << bombs << endl;
     }
-    cout << bombs << endl;
+    printf("%d\n", bombs);
 }
 }
+
