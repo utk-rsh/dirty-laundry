@@ -11,61 +11,67 @@ using namespace std;
 
 class Solution {
 public:
-    vector<vector<int> > generateMatrix(int n)
+    vector<int> spiralOrder(vector<vector<int>> &matrix)
     {
-        vector<vector<int>> ans;
-        vector<int> dummy (n);
-        for (int i = 0; i < n; i++)
-            dummy[i] = 0;
-        for (int i = 0; i < n; i++)
-            ans.push_back(dummy);
+        int m = matrix.size();
+        vector<int> ans;
+        if (m == 0)
+            return ans;
+        int n = matrix[0].size();
         int top = 1;
         int left = 0;
         int right = n-1;
-        int bottom = n-1;
+        int bottom = m-1;
         int counter = 1;
         int x = 0;
         int y = 0;
-        while (counter <= n*n)
+        cout << m*n << " ... " << endl;
+        while (counter <= m*n)
         {
      //       cout << "Right is " << right << endl;
             while(y <= right)
             {
      //           cout << "x is " << x << " y is " << y << " and counter is " << counter << endl;
-                ans[x][y] = counter;
+                ans.push_back(matrix[x][y]);
                 counter++;
                 y++;
             }
+            if (counter > m*n)
+                break;
             x++;
             y--;
             right--;
-     //       cout << "Bottom is " << bottom << endl;
+       //     cout << "Bottom is " << bottom << endl;
             while (x <= bottom)
             {
-     //           cout << "x is " << x << " y is " << y << " and counter is " << counter << endl;
-                ans[x][y] = counter;
+           //     cout << "x is " << x << " y is " << y << " and counter is " << counter << endl;
+                ans.push_back(matrix[x][y]);
                 counter++;
                 x++;
             }
+            if (counter > m*n)
+                break;
             x--;
             y--;
             bottom--;
-     //       cout << "Left is " << left << endl;
+         //   cout << "Left is " << left << endl;
             while (y >= left)
             {
-     //           cout << "x is " << x << " y is " << y << " and counter is " << counter << endl;
-                ans[x][y] = counter;
+       //         cout << "x is " << x << " y is " << y << " and counter is " << counter << endl;
+                ans.push_back(matrix[x][y]);
                 counter++;
                 y--;
             }
+            if (counter > m*n)
+                break;
             y++;
             x--;
             left++;
-    //        cout << "Top is " << top << endl;
+     //       cout << "Top is " << top << endl;
             while (x >= top)
             {
     //            cout << "x is " << x << " y is " << y << " and counter is " << counter << endl;
-                ans[x][y] = counter;
+                ans.push_back(matrix[x][y]);
                 counter++;
                 x--;
             }
@@ -77,16 +83,4 @@ public:
     }
 };
 
-int main()
-{
-Solution a;
-int n = 10;
-vector<vector<int>> ans = a.generateMatrix(n);
-for (int i = 0; i < n; i++)
-{
-    for (int j = 0; j < n; j++)
-        cout << ans[i][j] << " ";
-    cout << endl;
-}
-return 0;
-}
+\
